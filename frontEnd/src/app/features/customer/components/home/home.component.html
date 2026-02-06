@@ -28,6 +28,25 @@
 
     <!-- Advanced Filters Panel -->
     <div class="filters-panel" *ngIf="showFilters">
+      <!-- Active filters summary -->
+      <div class="active-filters" *ngIf="selectedCategory || selectedSpecialization || minPrice !== null || maxPrice !== null || minRating !== null || onlyAvailable">
+        <span class="active-title">Active filters:</span>
+        <ng-container *ngIf="selectedCategory">
+          <span class="pill">Category: {{ selectedCategory }}</span>
+        </ng-container>
+        <ng-container *ngIf="selectedSpecialization">
+          <span class="pill">Specialization: {{ selectedSpecialization }}</span>
+        </ng-container>
+        <ng-container *ngIf="minPrice !== null || maxPrice !== null">
+          <span class="pill">Price: {{ minPrice || 0 }} - {{ maxPrice || '∞' }}</span>
+        </ng-container>
+        <ng-container *ngIf="minRating !== null">
+          <span class="pill">Rating: {{ minRating }}+</span>
+        </ng-container>
+        <ng-container *ngIf="onlyAvailable">
+          <span class="pill">Only available</span>
+        </ng-container>
+      </div>
       <div class="filters-grid">
         <!-- Service Category Filter -->
         <div class="filter-group">
